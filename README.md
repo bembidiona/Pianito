@@ -68,8 +68,7 @@ Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSourc
 | 2 | \mod | sustain | pan |
 
 ## Notes
-- You can create a any number of Pianitos, each one playing a diferent synths.
-- Only the focused one will play.
+- You can create a any number of Pianitos, each one playing a diferent synth. But only the focused one will play.
 - If you are typing on the SC IDE, Pianito will not play.
 - SynthDef are expected to have a `freq` for the note to work, an `amp` for amplitude to work, and `gate` for the hold mode or sustain to work.
 - SuperDirt's instruments don't have a sustained envelope so Sustain and Hold keys don't work with them. You need to clone the SynthDef and add a proper gate if you want those features.
