@@ -63,7 +63,7 @@ Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSourc
 | Up | Transpose up an octave |
 | Home | Reset transposition |
 
-| Sliders | for simpleSynthdefs | for SuperDirt's Instrument | for SuperDirt's sample |
+| Sliders | for common SynthDefs | for SuperDirt's Instruments | for SuperDirt's samples |
 | --- | --- | --- | --- |
 | 1 | \amp | gain | gain |
 | 2 | \mod | sustain | pan |
