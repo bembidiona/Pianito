@@ -1,0 +1,8 @@
+(
+  name: "Pianito",
+  summary: "Play synths with the computer keyboard",
+  version: "1.0.0",
+  schelp: "Pianito",
+  license: "GPL",
+  copyright: "Jeremias Babini, 2020"
+)
