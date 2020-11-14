@@ -1,5 +1,6 @@
 # Pianito
-A handy GUI object for playing SC Synths with the computer keyboard as in [FL Studio](https://raw.githubusercontent.com/bembidiona/Pianito/master/HelpSource/Images/layout.png), with a couple of extra features.
+A GUI object for playing SC Synths with the computer keyboard as in [FL Studio](https://raw.githubusercontent.com/bembidiona/Pianito/master/HelpSource/Images/layout.png) and other daws, with a couple of extra features.\
+Mostly intended for playing melodic lines while livecoding in TidalCycles.
 
 <p align="center">
   <img width="458" height="173" src="https://raw.githubusercontent.com/bembidiona/Pianito/master/HelpSource/Images/pianito.png">
