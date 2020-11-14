@@ -1,0 +1,60 @@
+class:: Pianito
+summary:: play a synth using the computer keyboard
+related:: GUI/Views
+categories:: GUI>Views
+
+
+Description::
+
+A simple but handy GUI that enables playing Synths directly with the computer keyboard. Layout is the same as in FL Studio.
+
+Keyboard keys:
+table::
+## Z S X D C ... Q 2 W 3 E ... || Play a note
+## Left || Transpose down a semitone
+## Right || Transpose up a semitone
+## Down || Transpose down an octave
+## Up || Transpose up an octave
+## Home || Reset transposition
+## Space || Sustain pedal
+## Tab || Toggle holding notes
+::
+Slider controls \amp parameter
+
+
+classmethods::
+
+method::new
+
+argument::synth
+A Synthdef symbol or a Synth instance
+
+Examples::
+
+code::
+// Create a Pianito that uses the \default SynthDef
+(
+s.boot;
+Pianito();
+)
+
+// Create a Pianito using a custom SynthDef
+(
+// freq, amp, and gate are needed for Pianito
+SynthDef(\test,{ |freq=440, amp=0.5, gate = 1|
+	var sig = SinOsc.ar(freq*2);
+	var env = Env.adsr(0.1, 0.2, 0.5, 1);
+	sig = sig * EnvGen.kr(env, gate:gate, doneAction: Done.freeSelf);
+	sig = Pan2.ar(sig*amp, 0);
+	Out.ar(0,sig)
+}).add;
+
+Pianito(\test);
+)
+
+// Control the \freq of a Synth instance
+(
+x = Synth(\test);
+Pianito(x);
+)
+::
