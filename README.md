@@ -6,12 +6,29 @@ A handy GUI object for playing Synths with the computer keyboard as in [FL Studi
 </p>
 
 ## How to Install
-Just evaluate this in the SuperCollider IDE:\
-`Quarks.install("https://github.com/bembidiona/Pianito");`
+
+Open a new document on your SuperCollider IDE and type:
+
+```
+Quarks.install("https://github.com/bembidiona/Pianito");
+```
+
+After a few seconds, you should see the following printed in the Post window:
+
+```
+Installing Pianito
+Pianito installed
+-> Quark: Pianito
+```
+
+Finally recompile your class library. Go to `Language` menu, `Recompile class
+library`, or hit <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>.
 
 ## How to Run
-Assuming you had already added a SynthDef named `\yoursynth`, just evaluate:\
-`Pianito(\yoursynth);`
+Assuming you had already added a SynthDef named `\yoursynth`, just evaluate:
+```
+Pianito(\yoursynth);
+```
 
 ## How to Play
 | key      | function       |
