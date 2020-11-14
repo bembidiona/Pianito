@@ -6,13 +6,13 @@ Just evaluate this in the SuperCollider IDE:\
 `Quarks.install("https://github.com/bembidiona/Pianito");`
 
 ## How to Run
-assuming you had already added a SynthDef named `\yoursynth`, just evaluate:\
+Assuming you had already added a SynthDef named `\yoursynth`, just evaluate:\
 `Pianito(\yoursynth);`
 
 ## How to Play
 | key      | function       |
 | ---      | ---       |
-| Z S X D C ... Q 2 W 3 E ... | Play a note |
+| [ZSXDC...](https://i.pinimg.com/originals/46/02/86/4602862df84be4e8c164227c3e144207.png)| Play a note |
 | Space | Sustain pedal |
 | Tab | Toggle holding notes |
 | Left | Transpose down a semitone |
