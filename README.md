@@ -24,10 +24,25 @@ Pianito installed
 Finally recompile your class library. Go to `Language` menu, `Recompile class
 library`, or hit <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>.
 
-## How to Run
+## How to Run 
+### with custom Synths
 Assuming you had already added a SynthDef named `\yoursynth`, just evaluate:
 ```
 Pianito(\yoursynth);
+```
+
+### with SuperDirt Synths
+First initialize SuperDirt:
+```
+SuperDirt.start;
+```
+For using a SuperDirt instrument as `supersaw` just evaluate:
+```
+Pianito(~dirt, \supersaw);
+```
+And for using a sample, the second argument is the folder or `s` in tidal, and the third is the sample number or `n` in tidal:
+```
+Pianito(~dirt, \bass, 2);
 ```
 
 Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSource/Classes/Pianito.schelp) has a couple of examples.
@@ -37,7 +52,7 @@ Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSourc
   <img width="700" src="https://raw.githubusercontent.com/bembidiona/Pianito/master/HelpSource/Images/layout.png">
 </p>
 
-| other keys      | function       |
+| Special Keys      | Function       |
 | ---      | ---       |
 | Space | Sustain pedal |
 | Tab | Toggle holding notes |
@@ -47,8 +62,14 @@ Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSourc
 | Up | Transpose up an octave |
 | Home | Reset transposition |
 
-#### NOTES
+| Sliders | for simpleSynthdefs | for SuperDirt's Instrument | for SuperDirt's sample |
+| --- | --- | --- | --- |
+| 1 | \amp | gain | gain |
+| 2 | \mod | sustain | pan |
+
+# NOTES
 - You can create a any number of Pianitos, each one playing a diferent synths.
 - Only the focused one will play.
 - If you are typing in on the SC IDE, Pianito will not play
 - SynthDef are expected to have a `freq` for the note to work, an `amp` for amplitude to work, and `gate` for the hold mode or sustain to work
+- SuperDirt's instruments don't have a sustained envelope so Sustain and Hold keys don't work with them. You need to clone the SynthDef and add a proper gate if you want those features.
