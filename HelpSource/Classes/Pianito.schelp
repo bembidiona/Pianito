@@ -6,18 +6,18 @@ categories:: GUI>Views
 
 Description::
 
-A simple but handy GUI that enables playing Synths directly with the computer keyboard. Layout is the same as in FL Studio.
+A simple GUI that enables playing Synths directly with the computer keyboard. Notes Layout is the same as in FL Studio and other DAWs.
 
 Keyboard keys:
 table::
 ## Z S X D C ... Q 2 W 3 E ... || Play a note
+## Space || Sustain pedal
+## Tab || Toggle holding notes
 ## Left || Transpose down a semitone
 ## Right || Transpose up a semitone
 ## Down || Transpose down an octave
 ## Up || Transpose up an octave
 ## Home || Reset transposition
-## Space || Sustain pedal
-## Tab || Toggle holding notes
 ::
 Slider controls \amp parameter
 
