@@ -38,10 +38,10 @@ method::new
 argument::synth
 A Synthdef symbol, a Synth instance or the ~dirt global variable
 
-argument::(dirt_s)
+argument::dirt_s
 \s If using a SuperDirt instrument. Example: \supersaw
 
-argument::(dirt_n)
+argument::dirt_n
 \n If using a SuperDirt sample. Example: 3
 
 Examples::
