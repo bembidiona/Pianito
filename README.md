@@ -1,5 +1,5 @@
 # Pianito
-A handy GUI object for playing Synths with the computer keyboard as in FL Studio and other DAWs
+A handy GUI object for playing Synths with the computer keyboard as in [FL Studio](https://i.pinimg.com/originals/46/02/86/4602862df84be4e8c164227c3e144207.png), with a couple of extra features.
 
 ## How to Install
 Just evaluate this in the SuperCollider IDE:\
@@ -20,5 +20,3 @@ assuming you had already added a SynthDef named `\yoursynth`, just evaluate:\
 | Down | Transpose down an octave |
 | Up | Transpose up an octave |
 | Home | Reset transposition |
-
-
