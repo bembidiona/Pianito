@@ -25,18 +25,18 @@ Finally recompile your class library. Go to `Language` menu, `Recompile class
 library`, or hit <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>L</kbd>.
 
 ## How to Run 
-### with custom Synths
+#### with custom Synths
 Assuming you had already added a SynthDef named `\yoursynth`, just evaluate:
 ```
 Pianito(\yoursynth);
 ```
 
-### with SuperDirt Synths
-First initialize SuperDirt:
+#### with SuperDirt Synths
+First start SuperDirt:
 ```
 SuperDirt.start;
 ```
-For using a SuperDirt instrument as `supersaw` just evaluate:
+Now for using a SuperDirt's instrument as `supersaw`, evaluate:
 ```
 Pianito(~dirt, \supersaw);
 ```
@@ -67,9 +67,9 @@ Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSourc
 | 1 | \amp | gain | gain |
 | 2 | \mod | sustain | pan |
 
-# NOTES
+## Notes
 - You can create a any number of Pianitos, each one playing a diferent synths.
 - Only the focused one will play.
-- If you are typing in on the SC IDE, Pianito will not play
-- SynthDef are expected to have a `freq` for the note to work, an `amp` for amplitude to work, and `gate` for the hold mode or sustain to work
+- If you are typing on the SC IDE, Pianito will not play.
+- SynthDef are expected to have a `freq` for the note to work, an `amp` for amplitude to work, and `gate` for the hold mode or sustain to work.
 - SuperDirt's instruments don't have a sustained envelope so Sustain and Hold keys don't work with them. You need to clone the SynthDef and add a proper gate if you want those features.
