@@ -1,16 +1,16 @@
 Pianito{
-	*new{|synth=\default|
-		^super.new.init(synth);
+	*new{|synth=\default, dirt_s=nil, dirt_n=nil|
+		^super.new.init(synth, dirt_s, dirt_n);
 	}
-	init{|synth|
+	init{|synth, dirt_s, dirt_n|
 		var win, keys, userview;
 		var buttons,synths,tasks, releaseChangui;
 		var blackpattern = [false, true, false, true, false, false, true, false, true, false, true, false];
 		var step_acumulated = 0;
 		var transpose_home = 24 + (12*3);
 		var transpose = transpose_home;
-		var volume;
-		var width = 340;
+		var slider_volume, slider_mod;
+		var width = 355;
 		var height = 90;
 		var rootText = "C5";
 		var letterNotes = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
@@ -25,19 +25,37 @@ Pianito{
 		var sustain_keynumber = 32;
 		var toggle_keynumber = 16777217; //32
 		var btn_help;
-		var isAnInstance;
+		var pianitoType;
 		var windowName;
 
+		switch (synth.class,
+			Synth, {
+				pianitoType = \instance;
+				windowName = "Instance of: " ++ synth.defName.asString;
+			},
+			SuperDirt, {
 
+				if(dirt_s == nil,
+					{
+						dirt_s = \superchip;
+					}
+				);
 
-		if(synth.class == Synth,
-			{
-				isAnInstance = true;
-				windowName = synth.defName.asString;
+				SuperDirt.default = synth;
+				pianitoType = \superdirt;
+
+				if(dirt_n == nil,
+					{
+						windowName = "SuperDirt Synth: " ++ dirt_s.asString;
+					},
+					{
+						windowName = "SuperDirt Sample: " ++ dirt_s.asString ++ " " ++ dirt_n.asString;
+					}
+				);
 			},
 			{
-				isAnInstance = false;
-				windowName = synth.asString;
+				pianitoType = \synthdef;
+				windowName = "Pianito: " ++ synth.asString;
 			}
 		);
 
@@ -52,11 +70,11 @@ Pianito{
 		rootText.font = Font("Roboto Medium", 12);
 		rootText.stringColor = color_bg_details;
 
-		volume = Slider(win, Rect(width-15, 0, 15, height));
-		volume.value = 0.7;
-		volume.canFocus = false;
 
-		btn_help = Button(win, Rect(width-36, 0, 20, 20));
+
+
+		// TODO: The button should open the help file
+		/*btn_help = Button(win, Rect(width-36, 0, 20, 20));
 		btn_help.string = "?";
 		btn_help.canFocus = false;
 		btn_help.action = {
@@ -66,7 +84,7 @@ Pianito{
 			help_text = StaticText(help_win, Rect(40, 0, 200, height));
 			help_text.string = "[KEYS]: trigger notes\n[TAB]: toggle hold\n[SPACE]: sustain pedal\n[ARROWS]: transpose\n[SLIDER]: \\amp";
 			help_win.front;
-		};
+		};*/
 
 		//this are Symbols, not Chars
 		keys = [['z'],['s'],['x'],['d'],['c'],['v'],['g'],['b'],['h'],['n'],['j'],['m'],['q', ','],['2', 'l'],['w', '.'],['3',';'],['e','/'],['r'],['5'],['t'],['6'],['y'],['7'],['u'],['i'],['9'],['o'],['0'],['p'],['['],['='],[']']];
@@ -173,6 +191,14 @@ Pianito{
 
 		userview.animate = true;
 
+		slider_volume = Slider(win, Rect(width-30, 0, 15, height));
+		slider_volume.value = 0.7;
+		slider_volume.canFocus = false;
+
+		slider_mod = Slider(win, Rect(width-15, 0, 15, height));
+		slider_mod.value = 0.5;
+		slider_mod.canFocus = false;
+
 		win.view.keyDownAction_{|view, char, mod, unicode, keycode, key|
 			var pos;
 			var transposeRoot = {|root, change|
@@ -224,13 +250,34 @@ Pianito{
 
 						if(synths[pos].isNil){
 							var freq = (pos.asInteger+transpose).midicps;
+							var degree = pos.asInteger+transpose-transpose_home;
+							// for some reason default Tidal messages had latency:0.3, why? Less than 0.1 a latency log fest
+							var latency = 0.1;
 
-							if(isAnInstance == true,
-								{
+							switch (pianitoType,
+								\instance, {
+									// set the freq of a instance
 									synth.set(\freq, freq);
-								}
-								,{
-									synths[pos] = Synth(synth,[\amp, volume.value*0.3, \freq, freq]);
+									synths[pos] = 1;
+								},
+								\superdirt, {
+
+									if(dirt_n.isNil,
+										{
+											//play a SuperDirt synth
+											(type:\dirt, orbit:0, amp:slider_volume.value, sustain:slider_mod.value *0.8 + 0.01, s:dirt_s, n:degree, latency:latency).play;
+										},
+										{
+											// play a SuperDirt sample
+											(type:\dirt, orbit:0, amp:slider_volume.value, pan:slider_mod.value, s:dirt_s, n:dirt_n, speed:freq/262, latency:latency).play;
+										}
+									);
+
+									synths[pos] = 1;
+								},
+								{
+									// create a new Synth
+									synths[pos] = Synth(synth,[\amp, slider_volume.value*0.3, \freq, freq, \mod, slider_mod.value]);
 								}
 							);
 
