@@ -33,9 +33,12 @@ Pianito(\yoursynth);
 Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSource/Classes/Pianito.schelp) has a couple of examples.
 
 ## How to Play
-| key      | function       |
+<p align="center">
+  <img width="700" src="https://raw.githubusercontent.com/bembidiona/Pianito/master/HelpSource/Images/layout.png">
+</p>
+
+| other keys      | function       |
 | ---      | ---       |
-| [ZSXDC...](https://raw.githubusercontent.com/bembidiona/Pianito/master/HelpSource/Images/layout.png)| Play a note |
 | Space | Sustain pedal |
 | Tab | Toggle holding notes |
 | Left | Transpose down a semitone |
