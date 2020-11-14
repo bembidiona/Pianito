@@ -30,6 +30,8 @@ Assuming you had already added a SynthDef named `\yoursynth`, just evaluate:
 Pianito(\yoursynth);
 ```
 
+Also the [help file](https://github.com/bembidiona/Pianito/blob/master/HelpSource/Classes/Pianito.schelp) has a couple of examples.
+
 ## How to Play
 | key      | function       |
 | ---      | ---       |
@@ -41,3 +43,9 @@ Pianito(\yoursynth);
 | Down | Transpose down an octave |
 | Up | Transpose up an octave |
 | Home | Reset transposition |
+
+#### NOTES
+- You can create a any number of Pianitos, each one playing a diferent synths.
+- Only the focused one will play.
+- If you are typing in on the SC IDE, Pianito will not play
+- SynthDef are expected to have a `freq` for the note to work, an `amp` for amplitude to work, and `gate` for the hold mode or sustain to work
